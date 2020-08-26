@@ -232,6 +232,8 @@ def multi_process_fun(file_list, dirpath, function):
 def multi_process_transform(img_list, mask_list, img_folder, mask_folder):
     list_size = len(img_list)
     num_workers = 6
+    if num_workers > list_size:
+        num_worker = list_size
     worker_amount = int(list_size/num_workers)
 
     def rewrapped_transform(img_list, mask_list, img_folder, mask_folder):
